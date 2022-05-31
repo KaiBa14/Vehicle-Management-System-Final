@@ -1,0 +1,1055 @@
+import PySimpleGUI as gui
+import random
+gui.theme("darkbrown1")
+
+#Toyota Corolla
+#Toyota Fortuner 
+#Ford Escort
+#Ford Mustang
+#Honda CR-V
+#Honda NSX
+#Chevrolet Silverado
+#Chevrolet Equinox
+#Nissan GT-R
+#Nissan Leaf
+
+Layout_Menu = [
+    [gui.Text("Menu", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+    [gui.Text("1.REGISTRATION                        "),gui.Button('1')],
+    [gui.Text("2.CAR INFORMATION                  "),gui.Button('2')],
+    [gui.Text("3.ACCIDENT MANAGMENT          "),gui.Button('3')],
+    [gui.Text("4.REPAIR AND MAINTENANCE    "),gui.Button('4')],
+    [gui.Text("5.VEHICLE RE-MARKETING         "),gui.Button('5')],
+    [gui.Text("6.CAR INSURANCE                      "),gui.Button('6')],
+    [gui.Exit()]
+
+              ]
+
+window = gui.Window('Vehicle Management System', Layout_Menu,size =(750,500), element_justification= 'c')
+event,values = window.read()
+window.close()
+
+class Customer:
+    def __init__ (self,Name,Contact,Address):
+        self.Name = input("Name: ")
+        self.Contact = input("Contact: ")
+        self.Address = input("Address: ")
+
+    def PrintName(self):
+        print(self.Name);
+    def PrintContact(self):
+        print(self.Contact);
+    def PrintAddress(self):
+        print(self.Address);
+
+class Vehicle(Customer):
+    
+    
+    def __init__ (self,Name,contact,address,Plate_Num,Engine_Num, Chassis_Num,Body_Type, Denomination,
+                  Piston_Displacement, Cylinder_Num, Fuel, Make, Series, Body_Num, 
+                  Year_Model,Gross_WT, Net_WT, Shipping_WT, Net_Capacity):
+        super().__init__(Name,contact,address)
+
+        self.Plate_Num = input("Plate_Num: "); self.Engine_Num = input("Engine_Num: ");
+        self.Chassis_Num = input("Chassis_Num: ");      self.Body_Type = input("Body_Type: ");
+        self.Denomination = input("Denomination: ");    self.Piston_Displacement = input("Piston_Displacement: ");
+        self.Cylinder_Num = input("Cylinder_Num: ");    self.Fuel = input("Fuel: "); self.Make = input("Make: ");
+        self.Series = input("Series: "); self.Body_Num = input("Body_Num: "); self.Year_Model = input("Year_Model: "); 
+        self.Gross_WT = input("Gross_WT: ") + "kg";        self.Net_WT = input("Net_WT: ") + "kg"; 
+        self.Shipping_WT = input("Shipping_WT: ") + "kg";  self.Net_Capacity = input("Net_Capacity: ") + "kg";
+        
+        
+    def Print_Plate_Num(self):
+        print(self.Plate_Num)
+
+    def Print_Chassis_Num(self):
+        print(self.Chassis_Num)
+
+    def Print_Denomination(self):
+        print(self.Denomination)
+
+    def Print_Series(self):
+        print(self.Series)
+
+    def Print_Body_Num(self):
+        print(self.Body_Num)
+
+    def Print_Gross_WT(self):
+        print(self.Gross_WT)
+
+    def Print_Shipping_WT(self):
+        print(self.Shipping_WT)
+
+    def Print_Engine_Num(self):
+        print(self.Engine_Num)
+
+    def Print_Body_Type(self):
+        print(self.Body_Type)
+
+    def Print_Piston_Displacement(self):
+        print(self.Piston_Displacement)
+
+    def Print_Fuel(self):
+        print(self.Fuel)
+
+    def Print_Make(self):
+        print(self.Make)
+
+    def Print_Year_Model(self):
+        print(self.Year_Model)
+
+    def Print_Net_WT(self):
+        print(self.Net_WT)
+
+    def Print_Net_Capacity(self):
+        print(self.Net_Capacity)
+
+
+  
+customer1 = Vehicle("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0")
+
+Layout_Registration  = [
+            [gui.Text("Registration", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+            
+            [gui.InputText('01234567'),gui.InputText(customer1.Engine_Num),gui.InputText(customer1.Plate_Num),gui.InputText(customer1.Chassis_Num)],
+            [gui.InputText(customer1.Denomination),gui.InputText(customer1.Piston_Displacement),gui.InputText(customer1.Cylinder_Num),gui.InputText(customer1.Fuel)],
+            [gui.InputText(customer1.Make),gui.InputText(customer1.Series),gui.InputText(customer1.Body_Type),gui.InputText(customer1.Body_Num)],
+            [gui.InputText(customer1.Gross_WT),gui.InputText(customer1.Net_WT),gui.InputText(customer1.Shipping_WT),gui.InputText(customer1.Net_Capacity)],
+            [gui.InputText(customer1.Year_Model),gui.InputText(customer1.Name),gui.InputText(customer1.Contact)],
+
+    
+            [gui.Submit("Submit")],[gui.Exit()]
+
+            ]
+
+
+
+Layout_Vehicle_Information = [
+       [gui.Text("VEHICLE INFORMATION", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+       [gui.Text("BRAND")],  
+       [gui.CButton('   Toyota   ')],
+       [gui.CButton('    Ford    ')],
+       [gui.CButton('   Honda   ')],
+       [gui.CButton(' Chevrolet ')],
+       [gui.CButton('   Nissan  ')],
+
+       [gui.Submit('Submit'),gui.Exit()],
+       
+]
+
+#####################################
+
+Layout_Toyota = [
+      [gui.Text("Toyota", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+      [gui.Text("Models")],  
+      [gui.Button('Toyota Corolla')],
+      [gui.Button('Toyota Fortuner')],
+      [gui.Exit()],
+    ]
+
+Layout_Ford = [
+      [gui.Text("Ford", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+      [gui.Text("Models")],  
+      [gui.Button('Ford Escort')],
+      [gui.Button('Ford Mustang')],
+      [gui.Exit()],
+    ]
+
+Layout_Honda = [
+      [gui.Text("Honda", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+      [gui.Text("Models")],  
+      [gui.Button('Honda CR-V')],
+      [gui.Button('Honda NSX')],
+      [gui.Exit()],  
+    ]
+Layout_Chevrolet = [
+      [gui.Text("Chevrolet", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+      [gui.Text("Models")],  
+      [gui.CButton('Chevrolet Silverado')],
+      [gui.CButton('Chevrolet Equinox')],
+      [gui.Exit()],  
+    ]
+Layout_Nissan = [
+      [gui.Text("Nissan", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+      [gui.Text("Models")],  
+      [gui.CButton('Nissan GT-R')],
+      [gui.CButton('Nissan Leaf')],
+      [gui.Exit()],
+    ]
+
+
+#Polymorphism
+#Polymorphism
+from abc import ABC
+class Car(ABC):
+    def Name(self):
+        pass
+    def ARAI_Mileage(self):
+        pass
+    def City_Mileage(self):
+        pass
+    def Body_Type(self):
+        pass
+    def Piston_Displacement(self):
+        pass
+    def Cylinder_Num(self):
+        pass
+    def Fuel(self):
+        pass
+    def Seating_Capacity(self):
+        pass
+    def Year_Model(self):
+        pass
+    def Gross_WT(self):
+        pass
+    def Net_WT(self):
+        pass
+    def Shipping_WT(self):
+        pass
+    def Net_Capacity(self):
+        pass
+      
+class Toyota1(Car): #Toyota Corolla
+    def Name(self):
+        print("Name: Toyota Corolla")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 13.4 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 9.8 kmpl")
+    def Body_Type(self):
+        print("Body Type: Sedan")
+    def Piston_Displacement(self):
+        print("Displacement: 1794cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 4")
+    def Fuel(self):
+        print("Fuel Type: Petrol/50.0L Capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 5")
+    def Year_Model(self):
+        print("Year Model: 2020")
+    def Gross_WT(self):
+        print("Gross Weight: 1,600 kg")
+    def Net_WT(self):
+        print("Net Weight: 800 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 800 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 800 kg")
+
+class Toyota2(Car): #Toyota Fortuner
+    def Name(self):
+        print("Name: Toyota Fortuner")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 10.0 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 8.0 kmpl")
+    def Body_Type(self):
+        print("Body Type: SUV")
+    def Piston_Displacement(self):
+        print("Displacement: 2755cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 4")
+    def Fuel(self):
+        print("Fuel Type: Petrol/80.0L Capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 7")
+    def Year_Model(self):
+        print("Year Model: 2018")
+    def Gross_WT(self):
+        print("Gross Weight: 2,510 kg")
+    def Net_WT(self):
+        print("Net Weight: 1,255 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 1,255 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 1,255 kg")
+
+class Ford1(Car): #Ford Escort
+    def Name(self):
+        print("Name: Ford Escort")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 13.6 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 10.0 kmpl")
+    def Body_Type(self):
+        print("Body Type: Sedan")
+    def Piston_Displacement(self):
+        print("Displacement: 1297cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 4")
+    def Fuel(self):
+        print("Fuel Type: Petrol/45.0L Capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 5")
+    def Year_Model(self):
+        print("Year Model: 2003")
+    def Gross_WT(self):
+        print("Gross Weight: 1,017 kg")
+    def Net_WT(self):
+        print("Net Weight: 608 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 608 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 608 kg")
+
+class Ford2(Car): #Ford Mustang
+    def Name(self):
+        print("Name: Ford Mustang")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 30 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 21 kmpl")
+    def Body_Type(self):
+        print("Body Type: Coupe")
+    def Piston_Displacement(self):
+        print("Displacement: 4999 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 6")
+    def Fuel(self):
+        print("Fuel Type: Petrol/15.5L Capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 5")
+    def Year_Model(self):
+        print("Year Model: 2022")
+    def Gross_WT(self):
+        print("Gross Weight: 1,584 kg")
+    def Net_WT(self):
+        print("Net Weight: 792 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 792 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 792 kg")
+
+class Honda1(Car): #Honda CR-V
+    def Name(self):
+        print("Name: Honda CR-V")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 14.4 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 12.8 kmpl")
+    def Body_Type(self):
+        print("Body Type: SUV")
+    def Piston_Displacement(self):
+        print("Displacement: 1997 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 4")
+    def Fuel(self):
+        print("Fuel Type: Petrol/57.0L capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 5")
+    def Year_Model(self):
+        print("Year Model: 2019")
+    def Gross_WT(self):
+        print("Gross Weight: 1,724 kg")
+    def Net_WT(self):
+        print("Net Weight: 862 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 862 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 862 kg")
+
+class Honda2(Car): #Honda NSX
+    def Name(self):
+        print("Name: Honda NSX")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 11.0 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 9.0 kmpl")
+    def Body_Type(self):
+        print("Body Type: Coupe")
+    def Piston_Displacement(self):
+        print("Displacement: 2,977 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 6")
+    def Fuel(self):
+        print("Fuel Type: Petrol/70.0L capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 2")
+    def Year_Model(self):
+        print("Year Model: 2021")
+    def Gross_WT(self):
+        print("Gross Weight: 1,230 kg")
+    def Net_WT(self):
+        print("Net Weight: 615 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 615 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 615 kg")
+
+class Chevrolet1(Car): #Chevrolet Silverado
+    def Name(self):
+        print("Name:Chevrolet Silverado")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 12.2 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 10 kmpl")
+    def Body_Type(self):
+        print("Body Type: Crew Cab")
+    def Piston_Displacement(self):
+        print("Displacement: 2,726 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 4")
+    def Fuel(self):
+        print("Fuel Type: Gas/90L capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 6")
+    def Year_Model(self):
+        print("Year Model: 2022")
+    def Gross_WT(self):
+        print("Gross Weight: 3,220 kg")
+    def Net_WT(self):
+        print("Net Weight: 1,610 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 1,610 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 1,610 kg")
+
+class Chevrolet2(Car): #Chevrolet Equinox
+    def Name(self):
+        print("Name: Chevrolet Equinox")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 7.0 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 5.0 kmpl")
+    def Body_Type(self):
+        print("Body Type: Compact SUV")
+    def Piston_Displacement(self):
+        print("Displacement: 2,384 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 4")
+    def Fuel(self):
+        print("Fuel Type: Gas/ 56L capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 5")
+    def Year_Model(self):
+        print("Year Model: 2022")
+    def Gross_WT(self):
+        print("Gross Weight: 2,100 kg")
+    def Net_WT(self):
+        print("Net Weight: 1,050 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 1,050 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 1,050 kg")
+
+class Nissan1(Car): #Nissan GT-R
+    def Name(self):
+        print("Name: Nissan GT-R")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 9.0 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 8.0 kmpl")
+    def Body_Type(self):
+        print("Body Type: Coupe")
+    def Piston_Displacement(self):
+        print("Displacement: 3,798 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 6")
+    def Fuel(self):
+        print("Fuel Type: Petrol/ 74.0L capacity")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 4")
+    def Year_Model(self):
+        print("Year Model: 2018")
+    def Gross_WT(self):
+        print("Gross Weight: 3,933 kg")
+    def Net_WT(self):
+        print("Net Weight: 1,966 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight: 1,966 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 1,966 kg")
+
+class Nissan2(Car): #Nissan Leaf
+    def Name(self):
+        print("Name: Nissan Leaf")
+    def ARAI_Mileage(self):
+        print("ARAI Mileage: 13.4 kmpl")
+    def City_Mileage(self):
+        print("City Mileage: 11.0 kmpl")
+    def Body_Type(self):
+        print("Body Type: Hatchback")
+    def Piston_Displacement(self):
+        print("Displacement:2,205 cc")
+    def Cylinder_Num(self):
+        print("No. of Cylinder: 6")
+    def Fuel(self):
+        print("Fuel Type: Electric")
+    def Seating_Capacity(self):
+        print("Seating Capacity: 5")
+    def Year_Model(self):
+        print("Year Model: 2022")
+    def Gross_WT(self):
+        print("Gross Weight: 1,988 kg")
+    def Net_WT(self):
+        print("Net Weight: 994 kg")
+    def Shipping_WT(self):
+        print("Shipping Weight:994 kg")
+    def Net_Capacity(self):
+        print("Net Capacity: 994 kg")
+
+T1 = Toyota1()
+T2 = Toyota2()
+F1 = Ford1()
+F2 = Ford2()
+H1 = Honda1()
+H2 = Honda2()
+C1 = Chevrolet1()
+C2 = Chevrolet2()
+N1 = Nissan1()
+N2 = Nissan2()
+
+
+#####################################
+######################## Repair & Maintenance
+a=random.randint(1,12) #Battery
+b=random.randint(1,20) #Oil
+c=random.randint(1,4)  #Tires
+d=random.randint(1,35) #SparkPlugs
+e=random.randint(1,58) #Paint
+f=random.randint(1,14) #Headlights
+g=random.randint(1,10) #Rearlights
+h=random.randint(1,3)  #Wiper
+i=random.randint(1,5)  #Air Filter
+j=random.randint(1,80) #A/C System
+k=random.randint(1,13) #Steering System
+l=random.randint(1,6)  #Exhaust System
+
+class Repair_Maintenance:
+    def __init__ (self,Ran_Battery,Ran_Oil,Ran_Tires,Ran_Spark_Plugs,Ran_Paint, Ran_Headlights, Ran_Rearlights,
+                  Ran_Wipers,Ran_Air_Filters,Ran_AC_System, Ran_Steering, Ran_Exhaust_System
+                  ):
+        self.Ran_Battery = Ran_Battery; self.Ran_Oil = Ran_Oil;
+        self.Ran_Tires = Ran_Tires; self.Ran_Spark_Plugs = Ran_Spark_Plugs;
+        self.Ran_Paint = Ran_Paint ;self.Ran_Headlights = Ran_Headlights;
+        self.Ran_Rearlights = Ran_Rearlights;self.Ran_Wipers = Ran_Wipers;
+        self.Ran_Air_Filters = Ran_Air_Filters; self.Ran_AC_System = Ran_AC_System;
+        self.Ran_Steering = Ran_Steering;self.Ran_Exhaust_System = Ran_Exhaust_System;
+
+    def print_repair_all(self):
+        print ("\t\t\t\t\t\tREPAIR AND MAINTENANCE\n\n\n");
+        print ("Car Battery: " + str(self.Ran_Battery))
+        if a <= 4:
+            a == 0
+            print("Battery has no issue")
+            
+        else:
+            print("Price: " + str((a*10)) + "$")
+
+        print ("\nCar Oil Leak: " + str(self.Ran_Oil))
+        if b <= 6:
+            b == 0
+            print("Oil has no issue")
+        else:
+            print("Price: " + str((b*20)) + "$")
+
+        print ("\nCar Tires: " + str(self.Ran_Tires))
+        if c == 1:
+            c == 0
+            print("Tires has no issue")
+        else:
+            print("Price: " + str((c*5)) + "$")
+
+        print ("\nCar Spark Plugs: " + str(self.Ran_Spark_Plugs))
+        if d <= 15:
+            d == 0
+            print("Spark Plugs has no issue")
+        else:
+            print("Price: " + str((d*2)) + "$")
+
+        print ("\nCar RePaint: " + str(self.Ran_Paint))
+        if e <= 29:
+            e == 0
+            print("Car Paint has no issue")
+        else:
+            print("Price: " + str((e*10)) + "$")
+
+        print ("\nCar HeadLights: " + str(self.Ran_Headlights))
+        if f <= 4:
+            f == 0
+            print("Headlights has no issue")
+        else:
+            print("Price: " + str((f*50)) + "$")
+
+        print ("\nCar RearLights: " + str(self.Ran_Rearlights))
+        if g <= 6:
+            g == 0
+            print("Rearlight has no issue")
+        else:
+            print("Price: " + str((g*10)) + "$")
+            
+        print ("\nCar Wipers: " + str(self.Ran_Wipers))
+        if h <= 1:
+            h == 0
+            print("Wiper has no issue")
+        else:
+            print("Price: " + str((h*12)) + "$")
+
+        print ("\nCar Air Filters:  " + str(self.Ran_Air_Filters))
+        if i <= 3:
+            i == 0
+            print("Air Filter has no issue")
+        else:
+            print("Price: " + str((i*5)) + "$")
+
+        print ("\nCar A/C System: " + str(self.Ran_AC_System))
+        if j <= 14:
+            j == 0
+            print("A/C System has no issue")
+        else:
+            print("Price: " + str((j*10)) + "$")
+
+        print ("\nCar Steering System: " + str(self.Ran_Steering))
+        if k <= 9:
+            k == 0
+            print("Steering System has no issue")
+        else:
+            print("Price: " + str((k*50)) + "$")
+
+        print ("\nCar Exhaust System: " + str(self.Ran_Exhaust_System))
+        if l <= 2:
+            l == 0
+            print("Exhaust System has no issue")
+        else:
+            print("Price: " + str((l*50)) + "$")
+
+        print("\nTOTAL PRICE: " + str(((a * 10)+(b * 50)+(c * 5)+(d * 2)+(e * 10)+(f * 50)+(g * 10)+(h * 12)+(i * 5)+(j * 10)+(k * 50)+(l * 50))) + "$\n")
+
+######################## Repair & Maintenance
+
+######################## ACCIDENT MANAGMENT
+Layout_Q1 = [
+    [gui.Text("Accident Management Quiz", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+    [gui.Text("Q1: The Stoplights are in red, The driver stops at a red light. What will you do if you are driving behind?")],
+    [gui.Button('Start'),gui.Button('Stop'),gui.Button('Turn Left'),gui.Button('Turn Right'),gui.Button('Speed Up'),gui.Button('Slow Down')],
+    [gui.Exit()],
+
+              ]
+
+Layout_Q2 = [
+    [gui.Text("Accident Management Quiz", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+    [gui.Text("Q2: A driver in front of you is distracted using his/her cellphone while driving. What wll you do to avoid accidents?")],
+    [gui.Button('Start'),gui.Button('Stop'),gui.Button('Turn Left'),gui.Button('Turn Right'),gui.Button('Speed Up'),gui.Button('Slow Down')],
+    [gui.Exit()],
+
+              ]
+
+Layout_Q3 = [
+    [gui.Text("Accident Management Quiz", size=(50, 1), justification='center', font=("Arial", 25),relief=gui.RELIEF_RIDGE)],
+    [gui.Text("Q3: You are waiting while the driver moves his/her vehicle out of the parking space after going to a mall. What will you do to avoid accident?")],
+    [gui.Button('Start'),gui.Button('Stop'),gui.Button('Turn Left'),gui.Button('Turn Right'),gui.Button('Speed Up'),gui.Button('Slow Down')],
+    [gui.Exit()],
+
+              ]
+######################## ACCIDENT MANAGMENT
+
+class Accident_Management:
+
+    def __init__(self,Brand,Model,Color,Seat_Capacity,Fuel):
+        
+        self.Fuel = Fuel
+        self.Brand = Brand
+        self.Model = Model
+        self.Color = Color
+        self.Seat_Capacity = Seat_Capacity
+
+  
+    def start(self):
+        pass
+    def stop(self):
+        pass
+    def left(self):
+        pass
+    def right(self):
+        pass
+    def speed_up(self):
+        pass
+    def slow_down(self):
+        pass
+
+#car1 = Accident_Management("Brand: Toyota","\nModel: Toyota Fortuner","Color: Gray","\nSeat Capacity: 4","Fuel: Petrol")
+#car1.Brand()
+#####################################
+######################## Vehicle Re-Marketing
+status=random.randint(1,2)
+class Re_Marketing:
+    
+    def __init__ (self):
+        self.Seller = input("Seller Name: ");             self.Description = input("Vehicle Description: ");
+        self.Vehicle_Name = input("Vehicle Name: ");      self.URL = input("URL: ")
+        self.Promotion = input("Promotion: ");            self.Status = status;
+    def Re_Marketing_Print_All(self):
+        print ("\n\t\t\t\t\t\tVehicle Re-Marketing\n\n\n");
+        print ("=============================================================")
+        print ("Seller Name: ", str(self.Seller))
+        
+        print ("\nVehicle Name: ", str(self.Vehicle_Name))
+        
+        print ("\nVehicle Description: " , str(self.Description))
+        
+        print ("\nURL: ", str(self.URL))
+       
+        print ("\nPromotion: " , str(self.Promotion))
+
+        print(status)
+        if status == 1:
+            print("\nVehicle Not Available/Denied")
+        else : 
+            print("\nVehicle Bought/Accepted")
+        print ("=============================================================")
+
+######################## Vehicle Re-Marketing
+########################## Vehicle Ensurance
+class Insurance:
+    def __init__ (self):
+        self.Depositor = input("Depositor Name: ");         
+        self.DOP = input("Date of Purchase: ");
+        self.Name = self.Depositor;
+        self.Date = self.DOP;
+        self.Company = "KADB Insurance Company";
+
+    def print_Insurance(self):
+        print ("\nKADB Insurance Company\t\t\t\t\t\t\t\t\t\t\tKADB Debit Cards\n\n");
+        print ("\t\t\t\t\t\t   CONFIRMATION OF COVER\n")
+        print ("======================================================================================================================\n")
+        print ("\t\t\t\t\t\t   Group Policy Holder\n\n")
+        print ("\t\t\t\t\t                  1234ABC\n")
+        print ("======================================================================================================================\n")
+        print ("\t\t\t\t\t        Insured/Depositor's Name\n\n")
+        print ("\t\t\t\t          Depositor Name: ", str(self.Depositor))
+        print ("\n\t\t\t\t\t           Date of Purchase\n\n")
+        print ("\n\t\t\t\t\t\tDate of Purchase: ", str(self.DOP))
+        print ("======================================================================================================================\n")
+        print ("\t\t\t\t\t\t   AMOUNT OF INSURANCE\n")
+        print ("\t\t\t\t\t\t\t₱70,000\n\n")
+        print ("\t\t\t\t\t\t  SCHEDULE OF BENEFITS\n")
+        print ("\t\t\t\t\tAccidental Death and Permanent Disablement\n")
+        print ("\t\t\t\t\t\t\t₱50,000\n\n")
+        print ("\t\t\t\t\t\t   BURIAL ASSISTANCE\n")
+        print ("\t\t\t\t\t\t\t₱50,000\n")
+        print ("======================================================================================================================\n")
+        print ("This is to certify that the above listed name is insured with KADB Insurance Corporation under personal\n")
+        print ("Accident Master Policy GP603520.\n\n")
+        print ("This certificate is governored by the terms and conditions of the said master policy and all claims will be adjusted\n")
+        print ("in accordance therewith. The Insurance shall be in effect for one(1) year starting on the date if purchase,\n ")
+        print ("commencing from 12:01AM, Manila Standard Time.")
+        print ("======================================================================================================================\n")
+        print ("IMPORTANT: Age Eligibility: 16 to 65 years old.\n\n")
+        print ("To view the complete terms and conditions of PA Master Policy, you may log on to www.kadb.com or visit any KADB Branch.\n")
+        print ("For Inquiries, please contact 723-1234.")
+        print ("======================================================================================================================\n")
+        print ("\t\t\t\t\t\t JUAN DELA CRUZ\n")
+        print ("\t\t\t\t\t            President\n")
+        print ("======================================================================================================================\n")
+
+        print ("\n",self.Name," has signed an insurance on ",self.Date,"\n")
+        print ("Thank you for choosing ",self.Company)
+       
+
+########################## Vehicle Ensurance
+
+######################## Vehicle Re-Marketing
+while True:
+    if event in (None, 'Exit'):
+        break
+    ######################## Registration
+    if event == '1':
+        window = gui.Window('Registration', Layout_Registration,size =(1250,750), element_justification= 'c')
+
+        event,values = window.read()
+        if event == 'Submit':
+           gui.popup("Registration",          
+                "Registration Form: ", values,
+                "Congratulations! You are now Registered.")
+        window.close()
+        break
+    ######################## Registration
+    ######################## Vehicle Information
+    if event == '2':
+        window = gui.Window('Vehicle Information', Layout_Vehicle_Information,size =(1250,750), element_justification= 'c')
+        event,values = window.read()
+        window.close()
+        
+        
+        if event == '   Toyota   ':
+
+             window = gui.Window('Vehicle Information', Layout_Toyota,size =(1250,750), element_justification= 'c')
+             event,values = window.read()
+             window.close()
+             
+             
+             if event == 'Toyota Corolla':
+                T1.Name()
+                T1.ARAI_Mileage()
+                T1.City_Mileage()
+                T1.Body_Type()
+                T1.Piston_Displacement()
+                T1.Cylinder_Num()
+                T1.Fuel()
+                T1.Seating_Capacity()
+                T1.Year_Model()
+                T1.Gross_WT()
+                T1.Net_WT()
+                T1.Shipping_WT()
+                T1.Net_Capacity()
+        
+             if event == '4':
+                T2.Name()
+                T2.ARAI_Mileage()
+                T2.City_Mileage()
+                T2.Body_Type()
+                T2.Piston_Displacement()
+                T2.Cylinder_Num()
+                T2.Fuel()
+                T2.Seating_Capacity()
+                T2.Year_Model()
+                T2.Gross_WT()
+                T2.Net_WT()
+                T2.Shipping_WT()
+                T2.Net_Capacity()
+
+        if event == '    Ford    ':
+             window = gui.Window('Vehicle Information', Layout_Ford,size =(1250,750), element_justification= 'c')
+             event,values = window.read()
+             window.close()
+             
+             if event == 'Ford Escort':
+                F1.Name()
+                F1.ARAI_Mileage()
+                F1.City_Mileage()
+                F1.Body_Type()
+                F1.Piston_Displacement()
+                F1.Cylinder_Num()
+                F1.Fuel()
+                F1.Seating_Capacity()
+                F1.Year_Model()
+                F1.Gross_WT()
+                F1.Net_WT()
+                F1.Shipping_WT()
+                F1.Net_Capacity()
+        
+             if event == 'Ford Mustang':
+                F2.Name()
+                F2.ARAI_Mileage()
+                F2.City_Mileage()
+                F2.Body_Type()
+                F2.Piston_Displacement()
+                F2.Cylinder_Num()
+                F2.Fuel()
+                F2.Seating_Capacity()
+                F2.Year_Model()
+                F2.Gross_WT()
+                F2.Net_WT()
+                F2.Shipping_WT()
+                F2.Net_Capacity()
+
+        if event == '   Honda   ':
+             window = gui.Window('Vehicle Information', Layout_Honda,size =(1250,750), element_justification= 'c')
+             event,values = window.read()
+             window.close()
+
+             if event == 'Honda CR-V':
+                H1.Name()
+                H1.ARAI_Mileage()
+                H1.City_Mileage()
+                H1.Body_Type()
+                H1.Piston_Displacement()
+                H1.Cylinder_Num()
+                H1.Fuel()
+                H1.Seating_Capacity()
+                H1.Year_Model()
+                H1.Gross_WT()
+                H1.Net_WT()
+                H1.Shipping_WT()
+                H1.Net_Capacity()
+        
+             if event == 'Honda NSX':
+                H2.Name()
+                H2.ARAI_Mileage()
+                H2.City_Mileage()
+                H2.Body_Type()
+                H2.Piston_Displacement()
+                H2.Cylinder_Num()
+                H2.Fuel()
+                H2.Seating_Capacity()
+                H2.Year_Model()
+                H2.Gross_WT()
+                H2.Net_WT()
+                H2.Shipping_WT()
+                H2.Net_Capacity()
+
+        if event == ' Chevrolet ':
+             window = gui.Window('Vehicle Information', Layout_Chevrolet,size =(1250,750), element_justification= 'c')
+             event,values = window.read()
+             window.close()
+
+             if event == 'Chevolet Silverado':
+                C1.Name()
+                C1.ARAI_Mileage()
+                C1.City_Mileage()
+                C1.Body_Type()
+                C1.Piston_Displacement()
+                C1.Cylinder_Num()
+                C1.Fuel()
+                C1.Seating_Capacity()
+                C1.Year_Model()
+                C1.Gross_WT()
+                C1.Net_WT()
+                C1.Shipping_WT()
+                C1.Net_Capacity()
+        
+             if event == 'Chevrolet Equinox':
+                C2.Name()
+                C2.ARAI_Mileage()
+                C2.City_Mileage()
+                C2.Body_Type()
+                C2.Piston_Displacement()
+                C2.Cylinder_Num()
+                C2.Fuel()
+                C2.Seating_Capacity()
+                C2.Year_Model()
+                C2.Gross_WT()
+                C2.Net_WT()
+                C2.Shipping_WT()
+                C2.Net_Capacity()
+
+        if event == '   Nissan  ':
+             window = gui.Window('Vehicle Information', Layout_Nissan,size =(1250,750), element_justification= 'c')
+             event,values = window.read()
+             window.close()
+             if event == 'Nissan GT-R':
+                N1.Name()
+                N1.ARAI_Mileage()
+                N1.City_Mileage()
+                N1.Body_Type()
+                N1.Piston_Displacement()
+                N1.Cylinder_Num()
+                N1.Fuel()
+                N1.Seating_Capacity()
+                N1.Year_Model()
+                N1.Gross_WT()
+                N1.Net_WT()
+                N1.Shipping_WT()
+                N1.Net_Capacity()
+        
+             if event == 'Nissan Leaf':
+                N2.Name()
+                N2.ARAI_Mileage()
+                N2.City_Mileage()
+                N2.Body_Type()
+                N2.Piston_Displacement()
+                N2.Cylinder_Num()
+                N2.Fuel()
+                N2.Seating_Capacity()
+                N2.Year_Model()
+                N2.Gross_WT()
+                N2.Net_WT()
+                N2.Shipping_WT()
+                N2.Net_Capacity()
+    ######################## Vehicle Information
+    ######################## Vehicle Accident
+    if event == '3':
+        window = gui.Window('Accident Management Quiz', Layout_Q1,size =(1250,750), element_justification= 'c') ###Q1
+        event,values = window.read()
+        window.close()
+
+        if event == 'Start':
+            print("Q1.Wrong Answer")
+
+        if event == 'Stop':
+            print("Q1.Correct Answer")
+            print("There are two ways a rear-end accident happens at stoplights.") 
+            print("Scenario one: the driver stops at a red light, and the vehicle behind them does not stop in time.") 
+            print("Scenario two: both vehicles stop at a red light, the light turns green, and the trailing vehicle starts to go before the lead vehicle.")
+            #############
+            window = gui.Window('Accident Management Quiz', Layout_Q2,size =(1250,750), element_justification= 'c') ###Q2
+            event,values = window.read()
+            window.close()
+
+            if event == 'Start':
+             print("Q2.Wrong Answer")
+
+            if event == 'Stop':
+             print("Q2.Wrong Answer")
+
+            if event == 'Turn Left':
+             print("Q2.Wrong Answer")
+
+            if event == 'Turn Right':
+             print("Q2.Wrong Answer")
+
+            if event == 'Speed Up':
+             print("Q2.Wrong Answer")
+
+            if event == 'Slow Down':
+             print("\nQ2.Correct Answer")
+             print("Several states have enacted laws to prohibit mobile phone use while driving, yet distracted driving continues to be a serious problem.")
+             print("When drivers take their eyes off the road to snack, chat, or play on their smartphones, they may not realize that the light has turned red, and other people suffer the consequences.")
+            #############
+            window = gui.Window('Accident Management Quiz', Layout_Q3,size =(1250,750), element_justification= 'c') ###Q3
+            event,values = window.read()
+            window.close()
+            if event == 'Start':
+             print("Q3.Wrong Answer")
+
+            if event == 'Stop':
+             print("\nQ3.Correct Answer")
+             print("In this case, the driver that is backing up would normally be at fault. This may seem counterintuitive, since we already know that we need to allow enough space to react to other drivers. In this scenario, however, the driver moving forward has the right of way. Drivers backing out of a space should always check their mirrors and ensure their area is clear before moving.")
+            
+             print("\nCongratulations!!! You Win")
+             print("Your Current Car: ")
+             Accident_Management.print_all()
+             
+             if input == 'Toyota':
+                 print("Hi")
+
+             
+
+             if event == 'Turn Left':
+                print("Q3.Wrong Answer")
+
+            if event == 'Turn Right':
+                print("Q3.Wrong Answer")
+
+            if event == 'Speed Up':
+                 print("Q3.Wrong Answer")
+
+            if event == 'Slow Down':
+                print("Q3.Wrong Answer")
+
+
+        if event == 'Turn Left':
+            print("Q1.Wrong Answer")
+
+        if event == 'Turn Right':
+            print("Q1.Wrong Answer")
+
+        if event == 'Speed Up':
+            print("Q1.Wrong Answer")
+
+        if event == 'Slow Down':
+            print("Q1.Wrong Answer")
+
+
+
+        break
+    ######################## Vehicle Accident
+    ########################## Repair and Maintenance
+    if event == '4':
+        repair = Repair_Maintenance(a,b,c,d,e,f,g,h,i,j,k,l)
+        repair.print_repair_all()
+        break;
+    ########################## Repair and Maintenance
+    ########################## Vehicle Re-Marketing
+    if event == '5':
+        one = Re_Marketing();
+        one.Re_Marketing_Print_All()
+        break;
+    ########################## Vehicle Re-Marketing
+    ########################## Vehicle Ensurance
+    if event == '6':
+        ensurance_display = Insurance();
+        ensurance_display.print_Insurance();
+        break;
+    ########################## Vehicle Ensurance
